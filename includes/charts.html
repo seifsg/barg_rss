@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rss feed crawler Bar Chart Generator - Charts</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    </head>
+    <body>
+        <header id="header">
+        <h1>Rss feed crawler Bar Chart Generator</h1>
+        <h4>Showing top 10 frequent words in an rss feed</h4>
+        </header>
+        <section id="page">
+            <?php
+                $Lifehacker = new Rssfeed("http://feeds.gawker.com/lifehacker/full","Lifehacker");
+                $Lifehacker->render_bar_chart();
+                $Jezebel = new Rssfeed("http://feeds.gawker.com/jezebel/full","Jezebel");
+                $Jezebel->render_bar_chart();
+                $Gawker = new Rssfeed("http://feeds.gawker.com/gawker/full","Gawker");
+                $Gawker->render_bar_chart();
+                $io9 = new Rssfeed("http://feeds.gawker.com/io9/full","io9");
+                $io9->render_bar_chart();
+                $Kotaku = new Rssfeed("http://feeds.gawker.com/kotaku/full","Kotaku");
+                $Kotaku->render_bar_chart();
+                $Deadspin = new Rssfeed("http://feeds.gawker.com/deadspin/full","Deadspin");
+                $Deadspin->render_bar_chart();
+                $Jalopnik = new Rssfeed("http://feeds.gawker.com/jalopnik/full","Jalopnik");
+                $Jalopnik->render_bar_chart();
+                $Gizmodo = new Rssfeed("http://feeds.gawker.com/gizmodo/full","Gizmodo");
+                $Gizmodo->render_bar_chart();
+            ?>
+        </section>
+    </body>
+</html>
