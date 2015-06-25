@@ -43,9 +43,14 @@ Class Rssfeed{
     }
     
     private function calcul_occurances(){
-        $all_summery_texts = implode($this->page_content);
+        
+        $all_summery_texts = strtolower(trim(implode($this->page_content)));
+        $all_summery_texts = preg_replace('/([^a-zA-Z0-9_\-\$])/', ' ', $all_summery_texts);
+        //eliminating some of most used english words
+        $engw = array('those','where','there','which','their','other','about','these','would','write','number','could','people','first','yourself','myself','themselves','ourselves');
+        $all_summery_texts = preg_replace('/\b(?:' . join('|', $engw) . ')\b/i','',$all_summery_texts);
         $this->word_array = array_count_values( str_word_count($all_summery_texts, 1) );
-        //arsort($this->word_array);
+        arsort($this->word_array);
         
         //applying constrant
         //Keeping words with 5 or more chars
@@ -67,7 +72,7 @@ Class Rssfeed{
         
         ?>
         <script>
-          // Load the Visualization API and the piechart package.
+          // Load the Visualization API.
           google.load('visualization', '1.0', {'packages':['corechart']});
 
           // Set a callback to run when the Google Visualization API is loaded.
@@ -83,18 +88,17 @@ Class Rssfeed{
             data.addColumn('string', 'Words');
             data.addColumn('number', 'Words Count');
             data.addRows([
-      <?php foreach($this->word_array as $key=>$value){
-                echo "['$key',$value],";
-            }
-      ?>
+            <?php 
+                foreach($this->word_array as $key=>$value){
+                    echo "['$key',$value],";
+                }
+            ?>
             ]);
 
-            // Set chart options
             var options = {'title':'<?php echo $this->sitename;?>',
                            'width':600,
                            'height':300};
 
-            // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_<?php echo $this->sitename;?>'));
             chart.draw(data, options);
           }
@@ -106,5 +110,4 @@ Class Rssfeed{
     }
     
 }
-
 ?>

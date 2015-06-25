@@ -16,6 +16,7 @@ if(!$logged_in){
     include_once("includes/login.html");
 }else{
     require_once("includes/class.Rssfeed.php");
+    require_once("includes/functions.php");
     include_once("includes/charts.html");
 }
 

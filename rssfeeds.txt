@@ -1,0 +1,8 @@
+Lifehacker http://feeds.gawker.com/lifehacker/full
+Jezebel http://feeds.gawker.com/jezebel/full
+Gawker http://feeds.gawker.com/gawker/full
+io9 http://feeds.gawker.com/io9/full
+Kotaku http://feeds.gawker.com/kotaku/full
+Deadspin http://feeds.gawker.com/deadspin/full
+Jalopnik http://feeds.gawker.com/jalopnik/full
+Gizmodo http://feeds.gawker.com/gizmodo/full
